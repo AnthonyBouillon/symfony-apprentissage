@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création d'un article{% endblock %}
+
+{% block body %}
+<div>
+    <h1>Création d'un article !</h1>
+    <form method="POST">
+        <input type="text" name="title" placeholder="Titre" />
+        <textarea name="content" placeholder="Contenu de l'article"></textarea>
+        <input type="text" name="image" placeholder="Image de l'article" />
+        <input type="submit" name="submit" value="Enregistrer" />
+    </form>
+</div>
+{% endblock %}
