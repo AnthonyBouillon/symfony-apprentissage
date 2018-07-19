@@ -3,13 +3,19 @@
 {% block title %}Création d'un article{% endblock %}
 
 {% block body %}
-<div>
-    <h1>Création d'un article !</h1>
-    <form method="POST">
-        <input type="text" name="title" placeholder="Titre" />
-        <textarea name="content" placeholder="Contenu de l'article"></textarea>
-        <input type="text" name="image" placeholder="Image de l'article" />
-        <input type="submit" name="submit" value="Enregistrer" />
-    </form>
-</div>
+    <div>
+        <h1>Création d'un article !</h1>
+        {{ form_start(formArticle) }}
+        {{ form_row(formArticle.title, {'attr': {'placeholder': "Titre de l'article"}}) }} 
+        {{ form_row(formArticle.content, {'attr': {'placeholder': "Contenu de l'article"}}) }} 
+        {{ form_row(formArticle.image, {'attr': {'placeholder': "Image de l'article"}}) }} 
+        <button type="submit" class="btn btn-success">
+            {% if editMode %}    
+                Enregistrer les modifications
+            {% else %}
+                Ajouter l'article
+            {% endif %}
+        </button>
+        {{ form_end(formArticle) }}
+    </div>
 {% endblock %}

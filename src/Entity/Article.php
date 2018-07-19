@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+// Component qui me permet de vérifier les données d'un formulaire
+use Symfony\Component\Validator\Constraints as Asserts;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
@@ -18,16 +20,19 @@ class Article
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Asserts\Length(min=10, max=255, minMessage="Cette valeur est trop courte. Il doit comporter 10 caractères ou plus.", maxMessage="Cette valeur est trop longue. Il doit comporter 255 caractères ou moins.")
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Asserts\Length(min=10, minMessage="Cette valeur est trop courte. Il doit comporter 10 caractères ou plus.")
      */
     private $content;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Asserts\Url(message=" Cette valeur n'est pas une URL valide.")
      */
     private $image;
 
